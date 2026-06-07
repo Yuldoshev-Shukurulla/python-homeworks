@@ -1,9 +1,25 @@
 # ## Questions:
 
 # 1. <a href="https://pynative.com/python-if-else-and-for-loop-quiz/">Loops quiz</a>
+# Congratulations, You have completed Python Flow Control ( If Else and Loops) Quiz.
+# You scored 24 points out of 25 points in total.
+
+# No of Correct Answers: 24
+# No of wrong Answers: 1
+# Number of unanswered questions: 0
+# Your obtained grade is PASS 
 # 2.  What is the difference between the continue and break statements in Python?
+# The break statement exits the loop immediately. Any remaining iterations are completely canceled, and Python moves on to the code below the loop.
+# The continue statement skips the rest of the code inside the loop for the current iteration only. It jumps straight to the top of the loop to start the very next turn.
 # 3. Can you explain the difference between for loop and while loop?
+# A for loop is used when we know in advance how many times we want to run the code. It iterates over a sequence (like a list, a dictionary, a string, or a specific range).
+# A while loop is used when we do not know how many times the loop will need to run. It keeps executing as long as a specific condition remains True.
 # 4. How would you implement a nested for loop system? Provide an example.
+# for x in range(1, 4):
+#     for y in range(1, 3):
+#         print(f"Grid point: ({x}, {y})") 
+
+ 
 
 # ## Homeworks:
 
@@ -16,6 +32,7 @@
 
 
 
+
 # input:
 #     list1 = [1, 2, 3]
 #     list2 = [4, 5, 6]
@@ -24,9 +41,11 @@
 
 
 # input:
-#     list1 = [1, 1, 2, 3, 4, 2]
-#     list2 = [1, 3, 4, 5]
+#   list1 = [1, 1, 2, 3, 4, 2]
+#   list2 = [1, 3, 4, 5]
 # output: [2, 2, 5]
+# list3 = list(set(list1).symmetric_difference(set(list2)))
+# print(list3)
 
 
 # **2.** Print the square of each number which is less than `n` on a separate line.
@@ -38,6 +57,9 @@
 #     4
 #     9
 #     16
+# n = int(input('Enter a number:'))
+# for i in range(1, n):
+#     print(i * i)
 
 
 # **3.** `txt` nomli string saqlovchi o'zgaruvchi berilgan. `txt`dagi har uchinchi belgidan keyin pastgi chiziqcha (underscore) qo'yilsin. Agar belgi unli harf yoki orqasidan ostki chiziqcha qo'yilgan harf bo'lsa, ostki chiziqcha keyingi harfdan keyin qo'yilsin. Agar belgi satrdagi oxirgi belgi bo'lsa chiziqcha qo'yilmasin.
