@@ -15,7 +15,7 @@
 # Enter a temperature in degrees F: 72
 # 72 degrees F = 22.22 degrees C
 
-# Enter a temperature in degrees C: 37
+# Enter a temperature in degrees C: 37 
 # 37 degrees C = 98.60 degrees F
 
 
