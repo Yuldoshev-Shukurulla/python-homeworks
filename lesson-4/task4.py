@@ -44,8 +44,8 @@
 #   list1 = [1, 1, 2, 3, 4, 2]
 #   list2 = [1, 3, 4, 5]
 # output: [2, 2, 5]
-# list3 = list(set(list1).symmetric_difference(set(list2)))
-# print(list3)
+list3 = list(set(list1).symmetric_difference(set(list2)))
+print(list3)
 
 
 # **2.** Print the square of each number which is less than `n` on a separate line.
@@ -57,9 +57,9 @@
 #     4
 #     9
 #     16
-# n = int(input('Enter a number:'))
-# for i in range(1, n):
-#     print(i * i)
+n = int(input('Enter a number:'))
+for i in range(1, n):
+    print(i * i)
 
 
 # **3.** `txt` nomli string saqlovchi o'zgaruvchi berilgan. `txt`dagi har uchinchi belgidan keyin pastgi chiziqcha (underscore) qo'yilsin. Agar belgi unli harf yoki orqasidan ostki chiziqcha qo'yilgan harf bo'lsa, ostki chiziqcha keyingi harfdan keyin qo'yilsin. Agar belgi satrdagi oxirgi belgi bo'lsa chiziqcha qo'yilmasin.
@@ -77,7 +77,30 @@
 
 # input: abcabcdabcdeabcdefabcdefg
 # output: abc_abcd_abcdeab_cdef_abcdefg
+txt = input('Enter a string:')
+vovels = ['a', 'o','u', 'i', 'e', 'A', 'O', 'U', 'I', 'E']
+charcount = 0
+result = []
+dashes = []
+n = len(txt)
 
+for idx, char in enumerate(txt):
+    charcount += 1
+    result.append(char)
+    if idx == n - 1:
+        break
+    if charcount == 3:
+        next_char = txt[idx + 1] if idx + 1 < n else ""
+        
+        if char in vovels or char in dashes:
+            charcount -= 1  
+        else:
+            result.append("_")
+            dashes.append(char)
+            charcount = 0   
+
+final_text = "".join(result)
+print("Natija:", final_text)
 
 
 # **4. Number Guessing Game**
@@ -88,6 +111,30 @@
 # - If they guess correctly, print "You guessed it right!" and exit the loop.
 # - The player has 10 attempts to guess it. If the player can not find the correct number in 10 attempts, print "You lost. Want to play again? ".
 # - If the player types one of 'Y', 'YES', 'y', 'yes', 'ok' then start the game from the beginning.
+import random as r
+yes1 = ['Y', 'YES', 'y', 'yes', 'ok']
+play = True
+while play:
+    i = 0
+    number = r.randint(1, 100)
+    print('I thought a number between 1 and 100.')
+
+    while i < 10:
+        try1 = int(input("Enter your guess:"))
+        if try1 < number:
+            print("Too low!")
+            i += 1
+        elif try1 > number:
+            print("Too high!")
+            i += 1
+        else: 
+            print('You guessed it right!')
+            break
+
+    else: 
+        print(f'You lost, number was {number}')
+    play1 = input('Do you want to play again?')
+    play = True if play1 in yes1 else False
 
 
 # > Hint: Use Python’s `random.randint()` to generate the number.
@@ -98,13 +145,29 @@
 # - If the password is shorter than 8 characters, print "Password is too short." 
 # - If the password doesn’t contain at least one uppercase letter, print "Password must contain an uppercase letter.". 
 # - If the password meets both criteria, print "Password is strong."
+while True:
+    passw = input("Create a new password: ")
+    if len(passw) < 8:
+        print("Password is too short!")
+        continue
+    elif not any(char.isupper() for char in passw):
+        print('Password should contain at list one uppercase letter.')
+        continue
+    else:
+        print("Password is strong.")
+        break
 
 # **6. Prime Numbers**
 # Task: Write a Python program that prints all prime numbers between 1 and 100.
 
 # > A prime number is a number greater than 1 that is not divisible by any number other than 1 and itself. Use nested loops to check divisibility.
+prime = []
+for i in range(2, 100):
+        if not any(i % m == 0 for m in range(2, i)):
+                prime.append(i)
+print(prime)
 
-# ---
+# ---asd
 
 # ### Bonus Challenge
 # Task: Create a simple text-based Rock, Paper, Scissors game where the player plays against the computer.
@@ -112,3 +175,37 @@
 # - The player enters their choice.
 # - Display the winner and keep track of scores for the player and the computer.
 # - First to 5 points wins the match.
+import random as r
+yes2 = ['Y', 'YES', 'y', 'yes', 'ok']
+lw = ['rock', 'scissors', 'paper']
+while True:
+    wc = 0
+    wp = 0
+    print("--- NEW MATCH: First to 5 points wins! ---")
+
+    while wc < 5 and wp < 5:
+        compchoice = r.choice(lw)
+        playerch = input("Rock, Paper, Scissors: ").lower()
+        if playerch not in lw:
+            print("Invalid choice! Please type rock, paper, or scissors.")
+            continue
+            
+        print(f"Computer chose: {compchoice}")
+        if playerch == compchoice:
+            print(f"Equal. \nComp = {wc} \nYou  = {wp}")
+        elif (playerch == 'rock' and compchoice == 'scissors') or \
+             (playerch == 'paper' and compchoice == 'rock') or \
+             (playerch == 'scissors' and compchoice == 'paper'):
+            wp += 1
+            print(f"You won this round! \nComp = {wc} \nYou  = {wp}")
+        else:
+            wc += 1
+            print(f"I won this round! \nComp = {wc} \nYou  = {wp}")
+    if wc == 5:
+        print('\nMATCH OVER: You lost the match! 😢')
+    else:
+        print('\nMATCH OVER: You won the match! 🎉')
+    play2 = input('\nDo you want to play again? ')
+    if play2 not in yes2:
+        print("Thanks for playing!")
+        break
