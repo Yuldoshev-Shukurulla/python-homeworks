@@ -1,0 +1,26 @@
+FEEDBACK SUMMARY:
+- What was done well
+- **Task 1:** The functions `convert_cel_to_far` and `convert_far_to_cel` are correctly implemented with the given formulas. Input and output are handled appropriately, and rounding to 2 decimal places is applied. The use of f-strings for output is good practice.
+- **Task 2:** The `invest` function correctly calculates the investment growth over the years. The `while` loop is suitable for this task. Input and output formatting with f-strings are well done, and rounding is applied.
+- **Task 3:** The `factors` function correctly identifies and prints the factors of a given positive integer using a `for` loop and the modulo operator. The input handling is also appropriate.
+- **Task 4:** The `enrolment_stats` function successfully separates the enrollment and tuition data. The `mean` function is correctly implemented. The `median` function handles both odd and even list lengths correctly after sorting. The final output formatting matches the requirements, including commas for large numbers and decimal places.
+- **Task 5:** The logic for checking primality is present, and the use of `any` with a generator expression is a Pythonic way to approach it.
+
+- What needs improvement
+- **Task 1:** The sample run in the prompt shows the input prompt for Fahrenheit first, then Celsius. Your code prompts for Celsius first, then Fahrenheit. Also, the sample output for Celsius conversion shows "degrees C = ... degrees in F.", which is a bit redundant; "degrees C converted to F" or similar might be clearer, though your current output is understandable.
+- **Task 2:** The output formatting in the `invest` function has a period at the end of the amount, e.g., "$105.00.". The requirement was for "$105.00".
+- **Task 4:** The `median` function sorts the input list in place. While this works for this specific scenario, it's generally better practice to avoid modifying input lists directly unless that's the intended behavior. Returning a new sorted list or creating a copy before sorting would be a safer approach.
+- **Task 5:** The `is_prime` function `print`s `False` or `True` instead of `return`ing them. A function designed to check a condition should return a boolean value, which can then be used or printed by the caller. Also, the `print` statement inside the `else` block is a bit redundant since the `any` function already produces a boolean. The `else` block itself can just `return not any(...)`.
+
+- Any major issues (e.g., logic errors, misunderstanding, incomplete solutions)
+- **Task 1:** The prompt's sample run starts with Fahrenheit input and then Celsius. Your code has the order reversed. This is a minor deviation from the sample run but doesn't affect the core functionality.
+- **Task 5:** The primary issue here is that the function `is_prime` is printing its result rather than returning it. This makes the function less reusable as it's not returning a value that other parts of a program can use. For example, if you wanted to check if a number is prime and then perform an action based on that, you couldn't easily do so with your current implementation.
+
+KEY ADVICE:
+- **Return values from functions:** For functions that are meant to compute or check something, it's crucial to use `return` statements instead of `print` statements. This allows the results of the function to be used elsewhere in your program. For Task 5, instead of `print(False)` or `print(not any(...))`, you should `return False` or `return not any(...)`.
+- **Input/Output consistency:** Pay close attention to the order of operations and the exact formatting of input prompts and output messages as shown in the sample runs. For Task 1, ensure the input order matches the prompt's example. For Task 2, ensure no extra punctuation like periods are appended to the output amounts.
+- **Data Mutation:** Be mindful when modifying data structures passed into your functions. In Task 4, the `median` function sorts the list in place. While it works here, it's often better to avoid altering original data unless explicitly intended. Consider making a copy of the list before sorting or returning a new sorted list.
+
+Keep up the great work! You're demonstrating a good understanding of Python fundamentals. Focusing on these finer details will significantly improve the robustness and reusability of your code.
+
+=== EVALUATION COMPLETE ===
