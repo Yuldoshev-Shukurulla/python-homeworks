@@ -16,7 +16,23 @@
 
 # # input: div(6, 0)
 # # output: "Denominator can't be zero"
+# def check(funk):
+#     def wrapper(a, b):
+#         if b == 0:
+#             c = 'Denominator can\'t be zero'
+#             return c
+#         else:
+#             return funk(a, b)
+#     return wrapper
+        
+# @check
+# def div(a, b):
+#    return a / b
 
+# r1 = div(6, 2)
+# print(r1)
+# r2 = div(6, 0)
+# print(r2)
 
 # # ---
 
