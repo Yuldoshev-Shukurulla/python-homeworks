@@ -49,8 +49,9 @@
 # #      Example of a record:  
      
 # #      1001, John Doe, Software Engineer, 75000
-     
-
+# file = open('employees.txt', mode = 'w')
+# file.write('Employee ID, Name, Position, Salary\n1001, John Doe, Software Engineer, 75000')
+# file.close()
 # # 2. **Menu Options**  
 # #    Your program should present the following options:  
    
@@ -69,6 +70,20 @@
 # #    - **Option 4**: Update an employee’s information (name, position, or salary) based on the Employee ID.  
 # #    - **Option 5**: Delete an employee's record from the file using the Employee ID.  
 # #    - **Option 6**: Exit the program. 
+
+def addnew(a):
+    with open('employees.txt', mode = 'a') as f:
+        f.write(a)
+def viewall():
+    with open('employees.txt') as f:
+        print(f.read())
+def search(id):
+    with open('employees.txt') as f:
+        lines = f.readlines()
+        result = [t for t in lines if t[0:4] == '1001']
+        print(result)
+def update(id):
+
 
 # # ---
 
