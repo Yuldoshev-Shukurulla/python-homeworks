@@ -71,18 +71,79 @@
 # #    - **Option 5**: Delete an employee's record from the file using the Employee ID.  
 # #    - **Option 6**: Exit the program. 
 
-def addnew(a):
-    with open('employees.txt', mode = 'a') as f:
-        f.write(a)
-def viewall():
-    with open('employees.txt') as f:
-        print(f.read())
-def search(id):
-    with open('employees.txt') as f:
-        lines = f.readlines()
-        result = [t for t in lines if t[0:4] == '1001']
-        print(result)
-def update(id):
+# import os
+# os.chdir('C:\\a62ab832e6d116c5594b4b3659421f\sh\python-homeworks\lesson-6')
+# def load_data():
+#     if not os.path.exists('employees.txt'):
+#         with open('employees.txt', mode = 'w') as f:
+#             f.write('Employee ID, Name, Position, Salary\n')
+#         return []
+#     else: 
+#         with open('employees.txt', 'r') as f:
+#             lines = f.readlines()
+#             return [line.strip().split(', ') for line in lines[1:] if line.strip()]
+# def save_data(data):
+#         with open('employees.txt', mode = 'w') as f:
+#             f.write('Employee ID, Name, Position, Salary\n')
+#             for record in data:
+#                  f.write(', '.join(record) + '\n')
+
+# while True:
+#     print("\n1. Add new employee record\n2. View all employee records\n3. Search by ID\n4. Update employee info\n5. Delete employee record\n6. Exit")
+#     choice = input("Select an option: ")
+     
+#     if choice == '1':
+#          eid = input('Enter employee id: ')
+#          data = load_data()
+#          for x in data:
+#               if x[0] == eid:
+#                    print('There is an employee with this id.')
+#                    break
+#               else:
+#                     name = input('Enter employee name: ')
+#                     pos = input('Enter employee position: ')
+#                     salary = input('Enter employee salary: ')
+#                     with open('employees.txt', 'a') as f:
+#                         f.write(f'{eid}, {name}, {pos}, {salary}\n')
+
+#     elif choice == '2':
+#          data = load_data()
+#          for row in data:
+#               print(row) 
+#     elif choice == '3':
+#          searchid = input('Enter employee id: ')
+#          data = load_data()
+#          emp = next((x for x in data if x[0] == searchid), None)
+#          print(emp if emp else 'Employee not found.')
+#     elif choice == '4':
+#          upd = input('Enter employee id you want to update: ')
+#          data = load_data()
+#          update = False
+#          for i, row in enumerate(data):
+#               if row[0] == upd:
+#                    data[i][1] = input('New Name: ')
+#                    data[i][2] = input('New position: ')
+#                    data[i][3] = input('New salary: ')
+#                    update = True
+#                    break
+#          if update:
+#              save_data(data)
+#              print('Updated succesfully')
+#          else:
+#              print('Employee not found.')
+#     elif choice == '5':
+#          idd = input('Enter ID you want to delete: ')
+#          data = load_data()
+#          new_data = [x for x in data if x[0] != idd]
+#          if len(new_data) < len(data):
+#               save_data(new_data)
+#               print('Deleted.')
+#          else:
+#               print('Employee not found.')   
+#     elif choice == '6':
+#          break      
+         
+
 
 
 # # ---
@@ -137,4 +198,4 @@ def update(id):
 
 # # **Bonus Task**:  
 # # - Allow the user to specify how many "top common words" to display (e.g., top 3, top 10, etc.).  
-# # - Make sure the program ignores case, punctuation, and handles large files efficiently.
+# # - Make sure the program ignores case, punctuation, and handles large files efficiently. 

@@ -71,76 +71,76 @@
 # #    - **Option 5**: Delete an employee's record from the file using the Employee ID.  
 # #    - **Option 6**: Exit the program. 
 
-# import os
+import os
 
-# def load_data():
-#     if not os.path.exists("employees.txt"):
-#         with open("employees.txt", "w") as f:
-#             f.write("Employee ID, Name, Position, Salary\n")
-#         return []
+def load_data():
+    if not os.path.exists("employees.txt"):
+        with open("employees.txt", "w") as f:
+            f.write("Employee ID, Name, Position, Salary\n")
+        return []
     
-#     with open("employees.txt", "r") as f:
-#         lines = f.readlines()
-#         return [line.strip().split(", ") for line in lines[1:] if line.strip()]
+    with open("employees.txt", "r") as f:
+        lines = f.readlines()
+        return [line.strip().split(", ") for line in lines[1:] if line.strip()]
 
-# def save_data(data):
-#     with open("employees.txt", "w") as f:
-#         f.write("Employee ID, Name, Position, Salary\n")
-#         for record in data:
-#             f.write(", ".join(record) + "\n")
+def save_data(data):
+    with open("employees.txt", "w") as f:
+        f.write("Employee ID, Name, Position, Salary\n")
+        for record in data:
+            f.write(", ".join(record) + "\n")
 
-# while True:
-#     print("\n1. Add new employee record\n2. View all employee records\n3. Search by ID\n4. Update employee info\n5. Delete employee record\n6. Exit")
-#     choice = input("Select an option: ")
+while True:
+    print("\n1. Add new employee record\n2. View all employee records\n3. Search by ID\n4. Update employee info\n5. Delete employee record\n6. Exit")
+    choice = input("Select an option: ")
 
-#     if choice == '1':
-#         eid = input("Enter ID: ")
-#         name = input("Enter Name: ")
-#         pos = input("Enter Position: ")
-#         sal = input("Enter Salary: ")
-#         with open("employees.txt", "a") as f:
-#             f.write(f"{eid}, {name}, {pos}, {sal}\n")
+    if choice == '1':
+        eid = input("Enter ID: ")
+        name = input("Enter Name: ")
+        pos = input("Enter Position: ")
+        sal = input("Enter Salary: ")
+        with open("employees.txt", "a") as f:
+            f.write(f"{eid}, {name}, {pos}, {sal}\n")
     
-#     elif choice == '2':
-#         data = load_data()
-#         for row in data:
-#             print(row)
+    elif choice == '2':
+        data = load_data()
+        for row in data:
+            print(row)
             
-#     elif choice == '3':
-#         search_id = input("Enter ID to search: ")
-#         data = load_data()
-#         emp = next((x for x in data if x[0] == search_id), None)
-#         print(emp if emp else "Employee not found.")
+    elif choice == '3':
+        search_id = input("Enter ID to search: ")
+        data = load_data()
+        emp = next((x for x in data if x[0] == search_id), None)
+        print(emp if emp else "Employee not found.")
 
-#     elif choice == '4':
-#         update_id = input("Enter ID to update: ")
-#         data = load_data()
-#         found = False
-#         for i, row in enumerate(data):
-#             if row[0] == update_id:
-#                 data[i][1] = input("New Name: ")
-#                 data[i][2] = input("New Position: ")
-#                 data[i][3] = input("New Salary: ")
-#                 found = True
-#                 break
-#         if found:
-#             save_data(data)
-#             print("Updated.")
-#         else:
-#             print("ID not found.")
+    elif choice == '4':
+        update_id = input("Enter ID to update: ")
+        data = load_data()
+        found = False
+        for i, row in enumerate(data):
+            if row[0] == update_id:
+                data[i][1] = input("New Name: ")
+                data[i][2] = input("New Position: ")
+                data[i][3] = input("New Salary: ")
+                found = True
+                break
+        if found:
+            save_data(data)
+            print("Updated.")
+        else:
+            print("ID not found.")
 
-#     elif choice == '5':
-#         del_id = input("Enter ID to delete: ")
-#         data = load_data()
-#         new_data = [x for x in data if x[0] != del_id]
-#         if len(new_data) < len(data):
-#             save_data(new_data)
-#             print("Deleted.")
-#         else:
-#             print("ID not found.")
+    elif choice == '5':
+        del_id = input("Enter ID to delete: ")
+        data = load_data()
+        new_data = [x for x in data if x[0] != del_id]
+        if len(new_data) < len(data):
+            save_data(new_data)
+            print("Deleted.")
+        else:
+            print("ID not found.")
 
-#     elif choice == '6':
-#         break
+    elif choice == '6':
+        break
 # # ---
 
 # # ### **Word Frequency Counter**
@@ -189,7 +189,7 @@
 # #    this - 2
 # #    a - 2
 # #    test - 1
-   import os
+import os
 
 file_name = "sample.txt"
 
