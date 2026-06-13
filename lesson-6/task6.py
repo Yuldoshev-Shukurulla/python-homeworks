@@ -199,3 +199,52 @@
 # # **Bonus Task**:  
 # # - Allow the user to specify how many "top common words" to display (e.g., top 3, top 10, etc.).  
 # # - Make sure the program ignores case, punctuation, and handles large files efficiently. 
+
+import os
+filename= 'sample.txt'
+os.chdir('C:\\a62ab832e6d116c5594b4b3659421f\sh\python-homeworks\lesson-6')
+
+if not os.path.exists(filename):
+    print(f'{filename} not found.')
+    userinput = input(f'Please enter a text to save as {filename}: ')
+    with open(filename, 'w') as f:
+        f.write(userinput)
+
+with open(filename,'r') as f:
+    text = f.read()
+
+punctuation = [".", ",", "!", "?", ";", ":", "-", "(", ")", "\n"]
+cleaned_text = text.lower()
+for char in punctuation:
+    cleaned_text = cleaned_text.replace(char, ' ')
+words = [word for word in cleaned_text.split(' ') if word != '']
+totallen = len(words)
+word_count = {}
+for word in words:
+    if word in word_count:
+        word_count[word] += 1
+    else:
+        word_count[word] = 1
+word_sorted = sorted(word_count.items(), key = lambda x: x[1], reverse = True)
+try:
+    keys = int(input('How many top common words you want to see: '))
+    if keys <= 0:
+        keys = 5
+except ValueError:
+    keys = 5
+print(f'Total words: {totallen}')
+print(f'Top {keys} words is:')
+i = 0
+while i < keys:
+    abc = word_sorted[i][0] + " : " + str(word_sorted[i][1])
+    print(abc)
+    i += 1
+
+with open('word_count_report.txt', 'w') as f:
+    f.write(f'Total words: {totallen}\n')
+    f.write(f'Top {keys} words is:\n')
+    g = 0
+    while g < keys:
+        abc = word_sorted[i][0] + " : " + str(word_sorted[i][1]) + '\n'
+        f.write(abc)
+        g += 1
