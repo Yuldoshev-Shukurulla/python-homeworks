@@ -48,53 +48,53 @@
 # # # Normalization
 # # v_unit = v1.normalize()
 # # print(v_unit)      # Output: Vector(0.267, 0.534, 0.801)
-import math
+# import math
 
-class Vector:
-    def __init__(self, *components):
-        self.components = tuple(components)
+# class Vector:
+#     def __init__(self, *components):
+#         self.components = tuple(components)
 
-    def __len__(self):
-        return len(self.components)
+#     def __len__(self):
+#         return len(self.components)
 
-    def __str__(self):
-        return f"Vector{self.components}"
+#     def __str__(self):
+#         return f"Vector{self.components}"
 
-    def __repr__(self):
-        return str(self)
+#     def __repr__(self):
+#         return str(self)
 
-    def _check_dimensions(self, other):
-        if len(self) != len(other):
-            raise ValueError("Vectors must have the same dimensions")
+#     def _check_dimensions(self, other):
+#         if len(self) != len(other):
+#             raise ValueError("Vectors must have the same dimensions")
 
-    def __add__(self, other):
-        self._check_dimensions(other)
-        return Vector(*(a + b for a, b in zip(self.components, other.components)))
+#     def __add__(self, other):
+#         self._check_dimensions(other)
+#         return Vector(*(a + b for a, b in zip(self.components, other.components)))
 
-    def __sub__(self, other):
-        self._check_dimensions(other)
-        return Vector(*(a - b for a, b in zip(self.components, other.components)))
+#     def __sub__(self, other):
+#         self._check_dimensions(other)
+#         return Vector(*(a - b for a, b in zip(self.components, other.components)))
 
-    def __mul__(self, other):
-        if isinstance(other, Vector):
-            self._check_dimensions(other)
-            return sum(a * b for a, b in zip(self.components, other.components))
-        elif isinstance(other, (int, float)):
-            return Vector(*(a * other for a in self.components))
-        else:
-            return NotImplemented
+#     def __mul__(self, other):
+#         if isinstance(other, Vector):
+#             self._check_dimensions(other)
+#             return sum(a * b for a, b in zip(self.components, other.components))
+#         elif isinstance(other, (int, float)):
+#             return Vector(*(a * other for a in self.components))
+#         else:
+#             return NotImplemented
 
-    def __rmul__(self, other):
-        return self.__mul__(other)
+#     def __rmul__(self, other):
+#         return self.__mul__(other)
 
-    def magnitude(self):
-        return math.sqrt(sum(a ** 2 for a in self.components))
+#     def magnitude(self):
+#         return math.sqrt(sum(a ** 2 for a in self.components))
 
-    def normalize(self):
-        mag = self.magnitude()
-        if mag == 0:
-            raise ValueError("Cannot normalize a zero vector")
-        return Vector(*(round(a / mag, 3) for a in self.components))
+#     def normalize(self):
+#         mag = self.magnitude()
+#         if mag == 0:
+#             raise ValueError("Cannot normalize a zero vector")
+#         return Vector(*(round(a / mag, 3) for a in self.components))
 # # ---
 
 # # ## Employee Records Manager (OOP Version)
@@ -174,60 +174,60 @@ class Vector:
 # # 1. Add validation to ensure unique Employee IDs.  
 # # 2. Implement error handling for invalid inputs and file operations.  
 # # 3. Allow users to sort employee records (e.g., by salary or name) before displaying them.  
-import os
+# import os
 
-class Employee:
-    def __init__(self, employee_id, name, position, salary):
-        self.employee_id = employee_id
-        self.name = name
-        self.position = position
-        self.salary = float(salary)
+# class Employee:
+#     def __init__(self, employee_id, name, position, salary):
+#         self.employee_id = employee_id
+#         self.name = name
+#         self.position = position
+#         self.salary = float(salary)
 
-    def __str__(self):
-        return f"{self.employee_id}, {self.name}, {self.position}, {int(self.salary)}"
+#     def __str__(self):
+#         return f"{self.employee_id}, {self.name}, {self.position}, {int(self.salary)}"
 
 
-class EmployeeManager:
-    def __init__(self, filename="employees.txt"):
-        self.filename = filename
-        self._init_file()
+# class EmployeeManager:
+#     def __init__(self, filename="employees.txt"):
+#         self.filename = filename
+#         self._init_file()
 
-    def _init_file(self):
-        if not os.path.exists(self.filename):
-            with open(self.filename, "w", encoding="utf-8") as f:
-                f.write("Employee ID, Name, Position, Salary\n")
+#     def _init_file(self):
+#         if not os.path.exists(self.filename):
+#             with open(self.filename, "w", encoding="utf-8") as f:
+#                 f.write("Employee ID, Name, Position, Salary\n")
 
-    def _load_records(self):
-        records = []
-        if not os.path.exists(self.filename):
-            return records
-        with open(self.filename, "r", encoding="utf-8") as f:
-            lines = f.readlines()
-            for line in lines[1:]:
-                if line.strip():
-                    parts = [p.strip() for p in line.split(",")]
-                    if len(parts) == 4:
-                        records.append(Employee(parts[0], parts[1], parts[2], parts[3]))
-        return records
+#     def _load_records(self):
+#         records = []
+#         if not os.path.exists(self.filename):
+#             return records
+#         with open(self.filename, "r", encoding="utf-8") as f:
+#             lines = f.readlines()
+#             for line in lines[1:]:
+#                 if line.strip():
+#                     parts = [p.strip() for p in line.split(",")]
+#                     if len(parts) == 4:
+#                         records.append(Employee(parts[0], parts[1], parts[2], parts[3]))
+#         return records
 
-    def _save_records(self, records):
-        with open(self.filename, "w", encoding="utf-8") as f:
-            f.write("Employee ID, Name, Position, Salary\n")
-            for emp in records:
-                f.write(str(emp) + "\n")
+#     def _save_records(self, records):
+#         with open(self.filename, "w", encoding="utf-8") as f:
+#             f.write("Employee ID, Name, Position, Salary\n")
+#             for emp in records:
+#                 f.write(str(emp) + "\n")
 
-    def add_employee(self):
-        records = self._load_records()
-        eid = input("Enter Employee ID: ").strip()
+#     def add_employee(self):
+#         records = self._load_records()
+#         eid = input("Enter Employee ID: ").strip()
         
-        if any(emp.employee_id == eid for emp in records):
-            print("Error: Employee ID must be unique.")
-            return
+#         if any(emp.employee_id == eid for emp in records):
+#             print("Error: Employee ID must be unique.")
+#             return
 
-        name = input("Enter Name: ").strip()
-        pos = input("Enter Position: ").strip()
-        try:
-            sal = float(input("Enter
+#         name = input("Enter Name: ").strip()
+#         pos = input("Enter Position: ").strip()
+#         try:
+#             sal = float(input("Enter
 
 # # ---
 
