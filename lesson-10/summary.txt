@@ -1,0 +1,28 @@
+FEEDBACK SUMMARY:
+- What was done well:
+- **Task 1:** You've successfully used the `requests` library to fetch weather data. The logic for getting city coordinates and then fetching weather data is sound. You've also handled potential API errors with status code checks and provided user-friendly messages. The output is well-formatted and displays relevant information.
+- **Task 2:** You've effectively used the TMDB API to fetch genres and then discover movies based on a user's genre choice. The use of `random.choice` to pick a movie is a good approach for recommendations. The output for the recommended movie is clear and informative. You've also correctly identified the need for an API key and the base URL.
+- **Code Structure and Readability:** Both tasks are generally well-structured with clear variable names and comments (though some are in Uzbek, which is fine if that's your preferred language). The use of f-strings for URL construction is excellent.
+- **Error Handling:** You've implemented basic error handling for API requests (checking status codes) and for scenarios like city not found or invalid genre.
+
+- What needs improvement:
+- **API Keys:** In both tasks, you've used placeholder API keys ('1'). For actual usage, you need to obtain valid API keys from OpenWeatherMap and TMDB. This is crucial for the code to function correctly.
+- **Task 2: Genre Display:** While you iterate through genres and print them, the formatting could be slightly improved for better readability, perhaps by numbering them or aligning them more consistently.
+- **Task 2: Robustness of Genre Input:** The current code relies on exact (case-insensitive) matches for genre input. It might be beneficial to consider more flexible input handling, such as fuzzy matching or providing a list of genres to choose from with numbers, to make it more user-friendly.
+
+- Any major issues (e.g., logic errors, misunderstanding, incomplete solutions):
+- **Task 1: Missing `units` parameter in Geo API:** While you correctly use `&units=metric` for the weather API, the initial geocoding API call `geo_url` does not have a `units` parameter specified. While not strictly an error for this task, it's good practice to be consistent if certain units are expected downstream.
+- **Task 2: Missing `API_KEY` in `genre_url`:** You've included `&language=en-US` in the `genre_url` but are missing the `api_key` parameter. This will cause the genre list to not be fetched correctly. This is a significant issue for Task 2.
+- **Task 2: Handling of Empty Movie Lists:** You have a check `if movies_list:` but if `movies_list` is empty, the `random.choice(movies_list)` will raise an `IndexError`. The code would be more robust if it handled this specific case before attempting to pick a random movie.
+
+KEY ADVICE:
+- **Obtain and Use Real API Keys:** This is the most critical next step. Go to the respective websites (OpenWeatherMap and TMDB) and register to get your actual API keys. Replace the placeholder '1' with your valid keys. This will allow your code to actually fetch data from the APIs.
+- **Thoroughly Review API Documentation:** For both tasks, carefully re-read the documentation for the APIs you are using. Pay close attention to the required parameters for each endpoint (like `api_key`, `units`, etc.) and the structure of the JSON responses. This will help you catch missing parameters and understand how to access the data you need.
+- **Improve Input Validation and Error Handling:** While you've started with good error handling, consider edge cases. For example, what happens if the user enters a genre that doesn't exist? What if the movie API returns an empty list of movies for a valid genre? Thinking about these scenarios and adding checks will make your programs more robust and user-friendly.
+
+Concepts to revisit:
+- **API Endpoints and Parameters:** Ensure you understand which parameters are mandatory for each API call and what they do.
+- **JSON Data Structure:** Practice navigating and extracting data from JSON objects. The structure can sometimes be nested, and you need to be precise with your key accesses.
+- **Error Handling (try-except blocks):** While you've used status code checks, learning to use `try-except` blocks can make your error handling more comprehensive, especially for potential issues like network errors or unexpected data formats.
+
+Keep up the great work! You've demonstrated a good understanding of the `requests` library and API interactions. With a few adjustments and more practice, you'll be writing even more powerful Python applications.
