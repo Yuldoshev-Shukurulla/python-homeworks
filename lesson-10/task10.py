@@ -68,16 +68,16 @@ def get_movie():
     if genre_id == None:
         print('Invalid genre selected.')
         return
-    print(genre_id)
     movieurl = f'{baseurl}/discover/movie?api_key={api}&with_genres={genre_id}&language=en&page=1'
     movielist = requests.get(movieurl).json()['results']
 
     if movielist:
         rand = random.choice(movielist)
-        print('Recommended movie for you:')
-        print(f'Movie name: {rand['title']}')
-        print(f'Release date: {rand['release_date']}')
-        print(f'Rating: {rand['vote_average']}')
+        print(f"\n🎯 Recommended Movie for you:")
+        print(f"🎬 Title: {rand['title']}")
+        print(f"⭐️ Rating: {rand['vote_average']}")
+        print(f"📅 Release Date: {rand['release_date']}")
+        print(f"📝 Overview: {rand['overview']}")
     else:
         print('No movie found with this genre.')
 
@@ -87,59 +87,3 @@ get_movie()
 
 
 
-
-
-
-
-# import requests
-# import random
-
-# # 1. API Sozlamalari
-# API_KEY = "f57a1d46e21771a91cdaa63e818f071c"
-# BASE_URL = "https://api.themoviedb.org/3"
-
-# def get_movie_recommendation():
-#     genre_url = f"{BASE_URL}/genre/movie/list?api_key={API_KEY}&language=en-US"
-    
-#     response = requests.get(genre_url)
-#     if response.status_code != 200:
-#         print("API bilan bog'lanishda xatolik yuz berdi!")
-#         return
-
-#     genres_data = response.json()['genres']
-    
-#     print("=== Available Genres ===")
-#     for g in genres_data:
-#         print(f"- {g['name']}")
-        
-#     user_genre = input("\nEnter a genre from the list above: ").strip().lower()
-    
-#     genre_id = None
-#     for g in genres_data:
-#         if g['name'].lower() == user_genre:
-#             genre_id = g['id']
-#             break
-            
-#     if genre_id is None:
-#         print("Invalid genre selected!")
-#         return
-        
-#     discover_url = f"{BASE_URL}/discover/movie?api_key={API_KEY}&with_genres={genre_id}&language=en-US&page=1"
-    
-#     movie_response = requests.get(discover_url)
-#     print(movie_response.json())
-#     movies_list = movie_response.json()['results']
-    
-#     if movies_list:
-#         random_movie = random.choice(movies_list)
-        
-#         print(f"\n🎯 Recommended Movie for you:")
-#         print(f"🎬 Title: {random_movie['title']}")
-#         print(f"⭐️ Rating: {random_movie['vote_average']}")
-#         print(f"📅 Release Date: {random_movie['release_date']}")
-#         print(f"📝 Overview: {random_movie['overview']}")
-#     else:
-#         print("No movies found for this genre.")
-
-# if __name__ == "__main__":
-#     get_movie_recommendation()
