@@ -1,0 +1,22 @@
+FEEDBACK SUMMARY:
+- What was done well:
+- You demonstrated a strong understanding of NumPy's core functionalities, particularly `numpy.vectorize` for element-wise operations and `numpy.linalg.solve` for solving systems of linear equations.
+- Your code for Tasks 1-4 is correct and efficiently addresses the problem statements.
+- For the image manipulation tasks, you correctly identified the need to use NumPy for array operations and PIL for I/O. You also successfully implemented the core logic for flipping, adding noise, and masking.
+- The bonus challenge for modularizing image manipulation functions was also well-executed.
+
+- What needs improvement:
+- **Task 2 - Incorrect Application of `numpy.vectorize`**: While you used `numpy.vectorize` correctly for the concept, the specific calls `print(power(b, 3))` and `print(power(c, 2))` did not fully utilize the vectorized nature of the function with *two* arrays as intended by the task description. The task asked to calculate the power for each *pair* of numbers in two arrays, implying `power(array1, array2)` rather than fixing one argument.
+- **Task 3 - Missing Explanation**: Although the code is correct, it would be beneficial to add a brief comment explaining what `d`, `e`, and `f` represent in the context of the linear algebra problem.
+- **Task 4 - Missing Explanation**: Similar to Task 3, adding comments to explain the coefficient matrix (`g`) and the constant vector (`h`) would improve readability.
+- **Image Manipulation - Brighten Function**: The `brighten` function currently only brightens the "red" channel (indexed by `chanel = 0`). While this meets the example given ("e.g., red channel"), it could be more flexible to brighten any specified channel or all channels if desired. Additionally, the `brighten` function modifies the input array `a` in-place and then returns it. While this can be efficient, it's often considered better practice to return a *new* modified array to avoid unexpected side effects on the original data, especially if the original array is needed elsewhere.
+
+- Any major issues (e.g., logic errors, misunderstanding, incomplete solutions):
+- The primary misunderstanding was in Task 2 regarding how `numpy.vectorize` should be applied when dealing with two input arrays for element-wise operations. You applied it correctly as a decorator, but the way you called the function did not fully match the task's intent of pairing elements from two distinct arrays for the power calculation.
+
+KEY ADVICE:
+- **Understand `numpy.vectorize` for Multiple Arguments**: For `numpy.vectorize`, when you have a function that takes multiple arguments and you want to apply it element-wise across corresponding elements of multiple input arrays, you pass those arrays as separate arguments to the vectorized function. For instance, if `power(a, b)` calculates `a**b`, and you have `array1` and `array2`, you'd call `vectorized_power(array1, array2)`. Revisit the documentation or examples for `numpy.vectorize` when dealing with functions that operate on pairs of elements from different arrays.
+- **Best Practices for NumPy Array Modification**: When modifying NumPy arrays, consider whether you intend to modify the array in-place or create a new modified array. For functions like `brighten`, returning a new array is generally safer and leads to more predictable code, especially for beginners. You can achieve this by creating a copy of the input array before performing modifications.
+- **Readability through Comments**: Even for straightforward code, adding brief comments explaining the purpose of variables or specific code blocks can significantly enhance readability, especially when working with mathematical or scientific problems like solving systems of equations.
+
+Keep up the excellent work! You're grasping NumPy's capabilities well, and with a little refinement, your solutions will be even more robust and aligned with the problem statements.
