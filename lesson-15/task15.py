@@ -8,6 +8,7 @@
 
 # ---
 
+
 # #### **3. Subplots**
 # - **Task**: Create a 2x2 grid of subplots. In each subplot, plot:
 #   - Top-left: $ f(x) = x^3 $
