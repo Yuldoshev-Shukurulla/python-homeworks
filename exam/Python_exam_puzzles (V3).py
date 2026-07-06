@@ -27,19 +27,21 @@
 # Input: "(]"
 # Output: False
 
-# def isValid(s: str) ->  bool:
-#     Parentheses = {")": "(", "}": "{", "]": "["}
-#     stack = []
-#     for i in s:
-#         if i in Parentheses:
-#             top_element = stack.pop() if stack else '#'
-#             if Parentheses[i] != top_element:
-#                 return False
-#         else:
-#             stack.append(i)
-#     return len(stack) == 0
-# n1 = str(input('Enter parenthesis: '))
-# print(isValid(n1))
+def isValid(s: str) ->  bool:
+    Parentheses = {")": "(", "}": "{", "]": "["}
+    stack = []
+    for i in s:
+        if i in Parentheses.keys() or i in Parentheses.values():
+            if i in Parentheses:
+                top_element = stack.pop() if stack else '#'
+                if Parentheses[i] != top_element:
+                    return False
+            else:
+                stack.append(i)
+        else: continue
+    return len(stack) == 0
+n1 = str(input('Enter parenthesis: '))
+print(isValid(n1))
 
 # 3. Max score = 15
 # Berilgan butun sonlardan iborat list nums va butun son k.
@@ -64,14 +66,14 @@
 
 # Output:
 # [40,10,20,30]
-# n = [1,2,3,4,5,6,7]
-# k = 3
-# while k>len(n):
-#     k-=len(n)
-# a = []
-# for i in range(len(n)):
-#     a.append(n[i-k])
-# print(a)
+n = [1,2,3,4,5,6,7]
+k = 3
+while k>len(n):
+    k-=len(n)
+a = []
+for i in range(len(n)):
+    a.append(n[i-k])
+print(a)
 
 
 # 4. Max score = 20
@@ -111,5 +113,26 @@ print(clean_dishes)
 #  Tasks:
 
 #  1)Group the data by CustomerID and filter out customers who have made less than 20 orders.
-#  2)Identify customers who have ordered products with an average price per unit greater than $120.   
-
+#  2)Identify customers who have ordered products with an average price per unit greater than $120.
+#   
+import os
+os.chdir("C:\\a62ab832e6d116c5594b4b3659421f\sh\python-homeworks\exam")
+import pandas as pd
+df = pd.read_csv('customer_orders.csv')
+result = (
+    df
+    .groupby('CustomerID')
+    .agg({'Price' : ['count']})
+)
+result.columns = ['PriceCount']
+print(result[result['PriceCount']>=20])
+df['Price_per_unit'] = df.apply(lambda x: x['Price'] / x['Quantity'], axis=1)
+result2 = (
+    df
+    .groupby('CustomerID')
+    .agg({
+        'Price_per_unit' : ['mean']
+    })
+)
+result2.columns = ['PriceCount']
+print(result2[result2['PriceCount']>120])
