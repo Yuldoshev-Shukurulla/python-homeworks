@@ -1,0 +1,4 @@
+--- TOP 3 MOST FREQUENT ERRORS ---
+Disk full: 3
+Connection timeout: 3
+Auth failed: 1
