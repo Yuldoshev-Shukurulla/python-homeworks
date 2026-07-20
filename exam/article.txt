@@ -1,0 +1,8 @@
+Python is a powerful programming language. Python is used
+for web development, data science, and automation. Many
+developers love Python because Python is easy to learn.
+The Python community is large and supportive. Learning
+Python opens doors to many career opportunities in data
+science, machine learning, and software development.
+Data science with Python is growing rapidly. Python tools
+like NumPy and Pandas make data analysis simple and fast.
